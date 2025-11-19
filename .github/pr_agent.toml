@@ -20,6 +20,10 @@ push_commands = [
     "/describe",
     "/review",
 ]
+require_score_review = true
 
 [pr_reviewer]
-extra_instructions = "Answer in Japanese"
+extra_instructions = """\
+- Answer in Japanese
+- Is the code logic clear and easy to understand
+"""
