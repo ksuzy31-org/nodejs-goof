@@ -1,6 +1,29 @@
-[github_app] # Or [gitlab], [bitbucket_app], etc
-handle_push_trigger = true
-push_commands = [
+[github_app]
+# these toggles allows running the github app from custom deployments
+bot_user = "github-actions[bot]"
+override_deployment_type = true
+# settings for "pull_request" event
+handle_pr_actions = ['opened', 'reopened', 'ready_for_review']
+pr_commands = [
     "/describe --pr_description.final_update_message=false",
     "/review",
+    "/improve",
 ]
+# settings for "pull_request" event with "synchronize" action - used to detect and handle push triggers for new commits
+handle_push_trigger = false
+push_trigger_ignore_bot_commits = true
+push_trigger_ignore_merge_commits = true
+push_trigger_wait_for_initial_review = true
+push_trigger_pending_tasks_backlog = true
+push_trigger_pending_tasks_ttl = 300
+push_commands = [
+    "/describe",
+    "/review",
+]
+require_score_review = true
+
+[pr_reviewer]
+extra_instructions = """\
+- Answer in Japanese
+- Is the code logic clear and easy to understand
+"""
