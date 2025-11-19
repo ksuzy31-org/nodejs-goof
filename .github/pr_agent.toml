@@ -1,0 +1,8 @@
+[github_app] # Or [gitlab], [bitbucket_app], etc
+handle_push_trigger = true
+push_commands = [
+    "/describe --pr_description.final_update_message=false",
+    "/review",
+]
+[pr_reviewer]
+extra_instructions = "Answer in Japanese"
